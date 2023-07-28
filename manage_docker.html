@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="	https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    
+   <title>Team 22 LW WARRIORS</title>
+   <style>
+     body {
+       background-color: #8f3c09;
+     }
+ 
+     .navbar {
+       background-color: #038c15;
+       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+     }
+ 
+     #Project_name {
+       font-size: 30px;
+       color: #007bff;
+       font-weight: bold;
+     }
+ 
+     .nav-link {
+       font-size: 18px;
+       color: #007bff;
+       font-weight: bold;
+     }
+     .main_body {
+       padding: 20px;
+     }
+ 
+     .card {
+       margin: 20px;
+       box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+     }
+ 
+     .card-img-top {
+       height: 200px;
+       object-fit: cover;
+     }
+ 
+     .card-title {
+       font-size: 20px;
+       font-weight: bold;
+       margin-top: 10px;
+     }
+ 
+     .card-text {
+       font-size: 16px;
+       color: #6c757d;
+     }
+ 
+     .btn-primary {
+       background-color: #007bff;
+       border-color: #007bff;
+       font-size: 16px;
+       font-weight: bold;
+       padding: 8px 20px;
+     }
+ 
+     .btn-primary:hover {
+       background-color: #0056b3;
+       border-color: #0056b3;
+     }
+     .center-class {
+       display: flex;
+       justify-content: center;
+     }
+ 
+     /* Custom styles for Indian flag colors */
+     body {
+       background-color: #f7f7f7;
+     }
+ 
+     .navbar {
+       background-color: #007bff;
+     }
+ 
+     .navbar-brand,
+     .nav-link,
+     .btn-primary {
+       color: #fff;
+     }
+ 
+     .main_body {
+       background-image: linear-gradient(to bottom, #ff9933, #fff, #138808);
+       padding: 20px;
+     }
+ 
+     .card {
+       background-color: #fff;
+       border-radius: 10px;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+       overflow: hidden;
+     }
+ 
+     .card-img-top {
+       height: 200px;
+       object-fit: cover;
+       border-radius: 4%;
+       border: 5px solid #fff;
+     }
+ 
+     .card-body {
+       padding: 20px;
+     }
+ 
+     .card-title {
+       font-size: 24px;
+       color: #000;
+       margin-bottom: 10px;
+     }
+ 
+     .card-text {
+       font-size: 16px;
+       color: #000;
+     }
+ 
+     .btn-primary {
+       background-color: #138808;
+       border: none;
+     }
+ 
+     .btn-primary:hover {
+       background-color: #0c5b06;
+     }
+   </style>
+ </head>
+ 
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navnav ">
+            <div class="container-fluid">
+                <a class="navbar-brand" id="Project_name" href="main.html">Team 22 LW WARRIORS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+            </div>
+        </nav>
+    </div>
+
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <input class="form-control form-control-lg" id="dockername" type="text" placeholder="Enter docker name" name="subject" aria-label=".form-control-lg example">
+        <input class="form-control form-control-lg" id="osname" type="text" placeholder="Enter OS name" name="subject" aria-label=".form-control-lg example">
+        <button onclick=createdocker() class="btn btn-primary">create docker</button>
+        <div id="result"></div>
+        <button onclick=listdocker() class="btn btn-primary">get container list</button>
+        <div id="content"></div>
+    </div>
+    <div class="main_body">
+        <div class="row_of_services">
+            <div class="column_of_services">
+              <div class="card text-center">
+                <div class="card-header">
+                  start container
+                </div>
+                <div class="card-body">
+                    <input class="form-control form-control-lg my-3" id="dockername1" type="text" placeholder="Enter container name" name="subject" aria-label=".form-control-lg example">
+                    <button onclick=startdocker() class="btn btn-primary">start container</button>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="column_of_services">
+                <div class="card text-center">
+                    <div class="card-header">
+                      stop container
+                    </div>
+                    <div class="card-body">
+                        <input class="form-control form-control-lg my-3" id="dockername2" type="text" placeholder="Enter container name" name="subject" aria-label=".form-control-lg example">
+                        <button onclick=stopdocker() class="btn btn-primary">stop container</button>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="column_of_services">
+                <div class="card text-center">
+                    <div class="card-header">
+                      delete container
+                    </div>
+                    <div class="card-body">
+                        <input class="form-control form-control-lg my-3" id="containername" type="text" placeholder="Enter container name" name="subject" aria-label=".form-control-lg example">
+                        <button onclick=deletedocker() class="btn btn-primary">delete container</button>
+                    </div>
+                  </div>
+              </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+        function createdocker(){
+            name = document.getElementById('dockername').value
+            os = document.getElementById('osname').value
+            // console.log(bucketname)
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://3.108.221.64/cgi-bin/create_container.py?name='+name+"&os="+os);
+            xhr.send();
+            document.getElementById("result").innerHTML = 'container launching please wait....'
+            xhr.onreadystatechange = function(){
+                if (this.readyState == 4){
+                // console.log(this.responseText)
+                let a = this.responseText
+                // console.log(a)
+                document.getElementById("result").innerHTML = a;
+                }
+                else{
+                    document.getElementById("result").innerHTML = "some error occured"
+                }
+            }
+        }
+        function listdocker(){
+            // console.log(bucketname)
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://3.108.221.64/cgi-bin/list_containers.py');
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if (this.readyState == 4){
+                // console.log(this.responseText)
+                let a = this.responseText
+                // console.log(a)
+                document.getElementById("content").innerHTML = a;
+                }
+                else{
+                    document.getElementById("content").innerHTML = "some error occured"
+                }
+            }
+        }
+        function deletedocker(){
+            // console.log(bucketname)
+            name = document.getElementById('containername').value
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://3.108.221.64/cgi-bin/remove_container.py?name='+name);
+            xhr.send();
+            document.getElementById("result").innerHTML = "deleting container";
+            xhr.onreadystatechange = function(){
+                if (this.readyState == 4){
+                // console.log(this.responseText)
+                let a = this.responseText
+                // console.log(a)
+                document.getElementById("result").innerHTML = "container deleted";
+                }
+                else{
+                    document.getElementById("result").innerHTML = "some error occured"
+                }
+            }
+        }
+        function stopdocker(){
+            // console.log(bucketname)
+            name = document.getElementById('dockername2').value
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://3.108.221.64/cgi-bin/stop_conainer.py?name='+name);
+            xhr.send();
+            document.getElementById("result").innerHTML = "stopping container";
+            xhr.onreadystatechange = function(){
+                if (this.readyState == 4){
+                // console.log(this.responseText)
+                let a = this.responseText
+                // console.log(a)
+                document.getElementById("result").innerHTML = "container stopped";
+                }
+                else{
+                    document.getElementById("result").innerHTML = "some error occured"
+                }
+            }
+        }
+        function startdocker(){
+            // console.log(bucketname)
+            name = document.getElementById('dockername1').value
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://3.108.221.64/cgi-bin/start_container.py?name='+name);
+            xhr.send();
+            document.getElementById("result").innerHTML = "starting container";
+            xhr.onreadystatechange = function(){
+                if (this.readyState == 4){
+                // console.log(this.responseText)
+                let a = this.responseText
+                // console.log(a)
+                document.getElementById("result").innerHTML = "container started";
+                }
+                else{
+                    document.getElementById("result").innerHTML = "some error occured"
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
